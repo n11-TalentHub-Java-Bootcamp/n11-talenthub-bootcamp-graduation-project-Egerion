@@ -1,14 +1,14 @@
 package com.loanapp.egedemirbas.Credit.Enum;
 
-public enum EnumGuaranteeType {
+public enum EnumCreditResult {
 
-    NONE("NO_GUARANTEE"),
-    GUARANTEED("GUARANTEED"),
+    CONFIRMED("CREDIT_CONFIRMED"),
+    REJECTED("CREDIT_REJECTED"),
     LAST("LAST");
 
     private String type;
 
-    EnumGuaranteeType(String type) {
+    EnumCreditResult(String type) {
         this.type = type;
     }
 

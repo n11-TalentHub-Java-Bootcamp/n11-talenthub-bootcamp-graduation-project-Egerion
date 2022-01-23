@@ -1,6 +1,6 @@
 package com.loanapp.egedemirbas.User.Entity;
 
-import com.loanapp.egedemirbas.Credit.Enum.EnumGuaranteeType;
+import com.loanapp.egedemirbas.User.Enum.EnumGuaranteeType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -31,9 +31,10 @@ public class User implements Serializable {
     private Long id;
     private String name;
     private String surname;
-    private String identityNumber;
+    private Long identityNumber;
     private String phoneNumber;
     private BigDecimal salary;
+    private Long age;
     private Date dateOfBirth;
     private EnumGuaranteeType enumGuaranteeType;
 }

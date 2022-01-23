@@ -21,6 +21,10 @@ public class UserEntityService {
         return userDao.findUserById(id);
     }
 
+    public User findUserByIdentityNumber(Long identityNumber){
+        return userDao.findUserByIdentityNumber(identityNumber);
+    }
+
     public User saveUser(User user){
         return userDao.save(user);
     }

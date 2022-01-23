@@ -1,4 +1,4 @@
-package com.loanapp.egedemirbas.Log;
+package com.loanapp.egedemirbas.Generic.Log;
 
 import lombok.extern.slf4j.Slf4j;
 

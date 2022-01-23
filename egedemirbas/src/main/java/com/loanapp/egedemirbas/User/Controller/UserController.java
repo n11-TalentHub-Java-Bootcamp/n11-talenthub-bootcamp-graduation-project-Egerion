@@ -3,6 +3,7 @@ package com.loanapp.egedemirbas.User.Controller;
 import com.loanapp.egedemirbas.User.Converter.UserConverter;
 import com.loanapp.egedemirbas.User.Dto.UserDto;
 import com.loanapp.egedemirbas.User.Entity.User;
+import com.loanapp.egedemirbas.User.Exception.UserNotFoundException;
 import com.loanapp.egedemirbas.User.Service.UserEntityService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -27,7 +28,11 @@ public class UserController {
 
     @GetMapping("/{id}")
     public User findUserById(@PathVariable Long id){
-        return userEntityService.findUserById(id);
+        User user = userEntityService.findUserById(id);
+        if(user == null){
+            throw new UserNotFoundException("user not found with id: " + id);
+        }
+        return user;
     }
 
     @PostMapping("")

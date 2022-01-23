@@ -1,6 +1,6 @@
 package com.loanapp.egedemirbas.User.Dto;
 
-import com.loanapp.egedemirbas.Credit.Enum.EnumGuaranteeType;
+import com.loanapp.egedemirbas.User.Enum.EnumGuaranteeType;
 
 import java.math.BigDecimal;
 import java.util.Date;
