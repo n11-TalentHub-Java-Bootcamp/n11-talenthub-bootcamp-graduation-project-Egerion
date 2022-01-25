@@ -36,7 +36,7 @@ public class CreditModelService {
         return creditScore;
     }
 
-    public EnumCreditResult CreateUserCredit(User user){
+    public Credit CreateUserCredit(User user){
 
         Credit credit = null;
         double totalCash;
@@ -59,7 +59,7 @@ public class CreditModelService {
                 guaranteeIndex = 0.10;
             }
             else if(userSalary > 5000 && userSalary < 10000){
-                userCashLimit = 20.000;
+                userCashLimit = 20000;
                 guaranteeIndex = 0.20;
             }
             else if( userSalary > 10000){
@@ -87,6 +87,6 @@ public class CreditModelService {
         creditEntityService.saveCredit(credit);
 
         TestLog.print("Method: CalculateUserCreditResult, Credit " + credit + " saved!");
-        return enumCreditResult;
+        return credit;
     }
 }

@@ -42,12 +42,12 @@ public class CreditController {
 
     @PostMapping("")
     public EnumCreditResult setUserCredit(@RequestBody UserDto userDto){
-        EnumCreditResult enumCreditResult;
+        Credit credit = null;
         User user = UserConverter.INSTANCE.convertUserDtoToUser(userDto);
         if(user != null)
-            enumCreditResult = creditModelService.CreateUserCredit(user);
+            credit = creditModelService.CreateUserCredit(user);
         else
             throw new UserNotFoundException("user not found!");
-        return enumCreditResult;
+        return credit.getCreditResult();
     }
 }
