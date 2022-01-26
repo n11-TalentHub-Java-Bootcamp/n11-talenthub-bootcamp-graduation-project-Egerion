@@ -2,7 +2,8 @@ import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import React from 'react';
 import Menu from './component/menu/Menu';
-import Userlist from './component/user/userlist/Userlist';
+import FetchUserList from './component/user/userlist/FetchUserList';
+import UserList from './component/user/table/UserList';
 
 class App extends React.Component {
   render() {
@@ -11,8 +12,8 @@ class App extends React.Component {
 
     return (
       <div className="App">
-        <h1>Hello World 2</h1>
         <Menu></Menu>
+        <UserList></UserList>
       </div>
     );
   }
