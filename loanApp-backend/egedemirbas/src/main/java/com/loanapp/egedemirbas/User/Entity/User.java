@@ -32,9 +32,9 @@ public class User implements Serializable {
     private String surname;
     private Long identityNumber;
     private String phoneNumber;
-    private double salary;
+    private float salary;
     private Long age;
     private Date dateOfBirth;
-    private double guaranteeAmount;
+    private float guaranteeAmount;
     private EnumGuaranteeType enumGuaranteeType;
 }

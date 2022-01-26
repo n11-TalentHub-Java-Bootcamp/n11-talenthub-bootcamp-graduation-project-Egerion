@@ -24,7 +24,7 @@ public class Credit implements Serializable {
     @GeneratedValue
     private Long id;
     private Date insDate;
-    private double creditAmount;
+    private float creditAmount;
     private Long userIdentityNumber;
     private Date userDateOfBirth;
     private EnumCreditResult creditResult;

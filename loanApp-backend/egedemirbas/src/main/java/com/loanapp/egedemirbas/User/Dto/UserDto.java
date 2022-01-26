@@ -2,7 +2,6 @@ package com.loanapp.egedemirbas.User.Dto;
 
 import com.loanapp.egedemirbas.User.Enum.EnumGuaranteeType;
 
-import java.math.BigDecimal;
 import java.util.Date;
 
 public class UserDto {
@@ -10,10 +9,12 @@ public class UserDto {
     private Long id;
     private String name;
     private String surname;
-    private String identityNumber;
+    private Long identityNumber;
     private String phoneNumber;
-    private BigDecimal salary;
+    private float salary;
+    private Long age;
     private Date dateOfBirth;
+    private float guaranteeAmount;
     private EnumGuaranteeType enumGuaranteeType;
 
     public Long getId() {
@@ -40,11 +41,11 @@ public class UserDto {
         this.surname = surname;
     }
 
-    public String getIdentityNumber() {
+    public Long getIdentityNumber() {
         return identityNumber;
     }
 
-    public void setIdentityNumber(String identityNumber) {
+    public void setIdentityNumber(Long identityNumber) {
         this.identityNumber = identityNumber;
     }
 
@@ -56,12 +57,20 @@ public class UserDto {
         this.phoneNumber = phoneNumber;
     }
 
-    public BigDecimal getSalary() {
+    public float getSalary() {
         return salary;
     }
 
-    public void setSalary(BigDecimal salary) {
+    public void setSalary(float salary) {
         this.salary = salary;
+    }
+
+    public Long getAge() {
+        return age;
+    }
+
+    public void setAge(Long age) {
+        this.age = age;
     }
 
     public Date getDateOfBirth() {
@@ -72,25 +81,19 @@ public class UserDto {
         this.dateOfBirth = dateOfBirth;
     }
 
+    public float getGuaranteeAmount() {
+        return guaranteeAmount;
+    }
+
+    public void setGuaranteeAmount(float guaranteeAmount) {
+        this.guaranteeAmount = guaranteeAmount;
+    }
+
     public EnumGuaranteeType getEnumGuaranteeType() {
         return enumGuaranteeType;
     }
 
     public void setEnumGuaranteeType(EnumGuaranteeType enumGuaranteeType) {
         this.enumGuaranteeType = enumGuaranteeType;
-    }
-
-    @Override
-    public String toString() {
-        return "UserDto{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", identityNumber='" + identityNumber + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", salary=" + salary +
-                ", dateOfBirth=" + dateOfBirth +
-                ", enumGuaranteeType=" + enumGuaranteeType +
-                '}';
     }
 }

@@ -20,7 +20,7 @@ public class CreditModelService {
         long ageIndex;
         long guaranteeIndex = 0L;
         long creditScore;
-        double salaryIndex = user.getSalary();
+        float salaryIndex = user.getSalary();
 
         if(user.getAge() >= 18 && user.getAge() < 25)
             ageIndex = 22L;
@@ -38,11 +38,10 @@ public class CreditModelService {
 
     public Credit CreateUserCredit(User user){
 
-        Credit credit = null;
-        double totalCash;
-        double guaranteeIndex = 0;
-        double userCashLimit = 0;
-        double userSalary = user.getSalary();
+        float totalCash;
+        float guaranteeIndex = 0;
+        float userCashLimit = 0;
+        float userSalary = user.getSalary();
 
         int creditLimitMulti = 4;
 
@@ -53,24 +52,24 @@ public class CreditModelService {
         if(userCredit < 500L){
             enumCreditResult = EnumCreditResult.REJECTED;
         }
-        else if(userCredit  > 500 && userCredit < 1000){
+        else if(userCredit  >= 500 && userCredit <= 1000){
             if(userSalary < 5000){
                 userCashLimit = 10000;
-                guaranteeIndex = 0.10;
+                guaranteeIndex = (float) 0.10;
             }
-            else if(userSalary > 5000 && userSalary < 10000){
+            else if(userSalary >= 5000 && userSalary <= 10000){
                 userCashLimit = 20000;
-                guaranteeIndex = 0.20;
+                guaranteeIndex = (float) 0.20;
             }
             else if( userSalary > 10000){
                 userCashLimit = userSalary * creditLimitMulti / 2;
-                guaranteeIndex = 0.25;
+                guaranteeIndex = (float) 0.25;
             }
             enumCreditResult = EnumCreditResult.CONFIRMED;
         }
-        else if(userSalary >= 10000){
+        else if(userSalary > 10000){
             userCashLimit = userSalary * creditLimitMulti;
-            guaranteeIndex = 0.50;
+            guaranteeIndex = (float) 0.50;
             enumCreditResult = EnumCreditResult.CONFIRMED;
         }
 
@@ -79,14 +78,12 @@ public class CreditModelService {
         else
             totalCash = userCashLimit;
 
+        Credit credit = new Credit();
         credit.setInsDate(new Date());
         credit.setCreditResult(enumCreditResult);
         credit.setUserDateOfBirth(user.getDateOfBirth());
         credit.setUserIdentityNumber(user.getIdentityNumber());
         credit.setCreditAmount(totalCash);
-        creditEntityService.saveCredit(credit);
-
-        TestLog.print("Method: CalculateUserCreditResult, Credit " + credit + " saved!");
         return credit;
     }
 }
