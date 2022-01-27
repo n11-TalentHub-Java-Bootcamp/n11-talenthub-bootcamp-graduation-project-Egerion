@@ -2,8 +2,9 @@ import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import React from 'react';
 import Menu from './component/menu/Menu';
-import FetchUserList from './component/user/userlist/FetchUserList';
-import UserList from './component/user/table/UserList';
+import HomePage from './component/home/HomePage';
+import UserListPage from './component/user/UserListPage';
+import CreditPage from './component/credit/CreditPage';
 
 class App extends React.Component {
   render() {
@@ -13,11 +14,15 @@ class App extends React.Component {
     return (
       <div className="App">
         <Menu></Menu>
-        <UserList></UserList>
+        <Routes>
+          <Route path="/" exact element={<HomePage></HomePage>}></Route>
+          <Route path="/user/list" element={<UserListPage></UserListPage>}></Route>
+          <Route path="/user/register" element={"TODO"}></Route>
+          <Route path="/user/query" element={<CreditPage></CreditPage>}></Route>
+        </Routes>
       </div>
     );
   }
-
 }
 
 export default App;

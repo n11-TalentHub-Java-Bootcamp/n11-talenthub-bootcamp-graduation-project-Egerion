@@ -5,10 +5,12 @@ class Menu extends React.Component {
 
     constructor(props){
         super(props)
-
     }
 
     render() {    
+
+        console.log("menu called...");
+
         return (
             <div className="col-md-6 offset-md-3 ">
             <Navbar bg="light" expand="lg">
@@ -17,9 +19,9 @@ class Menu extends React.Component {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
-                            <Nav.Link href="/register">Register User</Nav.Link>
-                            <Nav.Link href="/list">User List</Nav.Link>
-                            <Nav.Link href="/query">Check My Credit Status</Nav.Link>
+                            <Nav.Link href="/user/register">Register User</Nav.Link>
+                            <Nav.Link href="/user/list">User List</Nav.Link>
+                            <Nav.Link href="/user/query">Check My Credit Status</Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

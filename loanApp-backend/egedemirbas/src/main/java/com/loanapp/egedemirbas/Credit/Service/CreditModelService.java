@@ -49,7 +49,7 @@ public class CreditModelService {
 
         Long userCredit = this.CalculateUserCredit(user);
 
-        if(userCredit < 500L){
+        if(userCredit < 500){
             enumCreditResult = EnumCreditResult.REJECTED;
         }
         else if(userCredit  >= 500 && userCredit <= 1000){
@@ -84,6 +84,10 @@ public class CreditModelService {
         credit.setUserDateOfBirth(user.getDateOfBirth());
         credit.setUserIdentityNumber(user.getIdentityNumber());
         credit.setCreditAmount(totalCash);
+
+        creditEntityService.saveCredit(credit);
+        TestLog.print("Method: CreateUserCredit called, credit with id:" + credit.getId() + " saved" + "\n");
+        TestLog.print("Credit result is:" + credit.getCreditResult().toString() + " with amount:" + credit.getCreditAmount() + "\n");
         return credit;
     }
 }

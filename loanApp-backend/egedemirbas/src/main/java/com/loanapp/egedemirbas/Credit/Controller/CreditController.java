@@ -14,8 +14,11 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
+import java.text.DateFormat;
+import java.util.Calendar;
 import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @RestController
 @RequestMapping("/credit")
@@ -34,9 +37,17 @@ public class CreditController {
 
     @GetMapping("/{userIdentityNumber}/{userDateOfBirth}")
     public Credit findAllByUserIdentityNumberAndUserDateOfBirth(@PathVariable Long userIdentityNumber, @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") Date userDateOfBirth){
+
         Credit credit = creditEntityService.findAllByUserIdentityNumberAndUserDateOfBirth(userIdentityNumber, userDateOfBirth);
-        if(credit == null)
-            throw new CreditNotFoundException("Credit not found belonging to " + userEntityService.findUserByIdentityNumber(userIdentityNumber).getName());
+        if(credit == null){
+            User user = userEntityService.findUserByIdentityNumber(userIdentityNumber);
+            if(user == null){
+                throw new CreditNotFoundException("Credit not found belonging to " + userEntityService.findUserByIdentityNumber(userIdentityNumber).getName());
+            }
+            else{
+                throw new UserNotFoundException("User cannot be found in database!");
+            }
+        }
         return credit;
     }
 
