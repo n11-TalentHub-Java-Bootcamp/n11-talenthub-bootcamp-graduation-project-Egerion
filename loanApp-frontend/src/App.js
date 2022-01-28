@@ -3,8 +3,9 @@ import './App.css';
 import React from 'react';
 import Menu from './component/menu/Menu';
 import HomePage from './component/home/HomePage';
-import UserListPage from './component/user/UserListPage';
-import CreditPage from './component/credit/CreditPage';
+import UserListPage from './component/user/list/UserListPage';
+import CreditQueryPage from './component/credit/query/CreditQueryPage';
+import CreditApplyPage from './component/credit/apply/CreditApplyPage';
 
 class App extends React.Component {
   render() {
@@ -17,8 +18,8 @@ class App extends React.Component {
         <Routes>
           <Route path="/" exact element={<HomePage></HomePage>}></Route>
           <Route path="/user/list" element={<UserListPage></UserListPage>}></Route>
-          <Route path="/user/register" element={"TODO"}></Route>
-          <Route path="/user/query" element={<CreditPage></CreditPage>}></Route>
+          <Route path="/credit/register" element={<CreditApplyPage></CreditApplyPage>}></Route>
+          <Route path="/credit/query" element={<CreditQueryPage></CreditQueryPage>}></Route>
         </Routes>
       </div>
     );

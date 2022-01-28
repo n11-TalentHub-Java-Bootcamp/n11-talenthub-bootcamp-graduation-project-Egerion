@@ -1,15 +1,10 @@
 import axios from "axios";
+import React from "react";
 
-class CreditService{
+class UserService{
 
-    CreditQueryResult(userId, DateOfBirth){
-
-        const url = 'http://localhost:8081/credit/' + userId + '/' + DateOfBirth;
-        return axios.get(url);
-    }
-
-    CreditCreateNew(oData){
-
+    RegisterUser(oData){
+                
         const userDto = {
             name: oData.userName,
             surname: oData.userSurname,
@@ -22,9 +17,10 @@ class CreditService{
             enumGuaranteeType: oData.userGuaranteed,
         }
 
-        const url = "http://localhost:8081/credit"
+        const url = "http://localhost:8081/user"
         return axios.post(url, userDto);
     }
+
 }
 
-export default new CreditService();
+export default new UserService();

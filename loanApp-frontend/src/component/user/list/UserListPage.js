@@ -1,5 +1,5 @@
 import React from "react";
-import UserList from "./list/UserList";
+import UserList from "./UserList";
 
 class UserListPage extends React.Component{
 

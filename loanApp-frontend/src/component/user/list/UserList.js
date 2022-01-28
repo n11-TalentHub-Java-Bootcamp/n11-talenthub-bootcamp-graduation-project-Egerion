@@ -27,7 +27,7 @@ class UserList extends Component {
 		console.log(posts);
 		return (
 			<div>
-				<table class="table table-dark">
+				<table className="table table-dark">
 					<thead>
 						<tr>
 							<th>Name</th>

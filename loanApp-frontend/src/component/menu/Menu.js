@@ -12,16 +12,16 @@ class Menu extends React.Component {
         console.log("menu called...");
 
         return (
-            <div className="col-md-6 offset-md-3 ">
-            <Navbar bg="light" expand="lg">
+            <div className="col-md-4 offset-md-4 ">
+            <Navbar bg="light" expand="auto">
                 <Container>
-                    <Navbar.Brand href="/">Loan App v1</Navbar.Brand>
+                    <Navbar.Brand href="/" style={{color:"blue"}}>Loan App v1.0.0.0 by Ege Demirbaş</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
-                            <Nav.Link href="/user/register">Register User</Nav.Link>
                             <Nav.Link href="/user/list">User List</Nav.Link>
-                            <Nav.Link href="/user/query">Check My Credit Status</Nav.Link>
+                            <Nav.Link href="/credit/query">Credit Status</Nav.Link>
+                            <Nav.Link href="/credit/register">Apply for New Credit</Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

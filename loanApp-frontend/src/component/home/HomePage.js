@@ -9,7 +9,7 @@ class HomePage extends React.Component{
         return(
             <div className="container">
                 <div className="text-center mt-5">
-                    <h1>n11 Java Bootcamp</h1>
+                    <h1>Java Bootcamp</h1>
                     <p>Fullstack Proje Uygulaması</p>
                     <p>React & Spring Boot</p>
                 </div>
