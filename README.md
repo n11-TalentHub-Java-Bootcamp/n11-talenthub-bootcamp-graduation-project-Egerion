@@ -21,7 +21,7 @@
 
 ## About
 
-A Restfull Application based on Spring Boot Framework which consist of two sub projects. 
+A Restfull Application based on Spring Framework which consist of two sub projects. 
 First project is back-end of the Loan App and the second one is the front-end part.
 Application capabilities are:
 
@@ -40,7 +40,7 @@ Application capabilities are:
 
 Project consist of two sections, first section is back-end of the project, which based on Spring Framework. Postgres SQL is getting used as database and Hibernate Framework handles the interaction.
 
-Backend part of the project is ready to deploy and current configured to running at  <span style="color:red">localhost:8081</span>.
+Backend part of the project is ready to deploy and currently configured to running at  <span style="color:red">localhost:8081</span>.
 
 ---
 
@@ -79,7 +79,7 @@ Here are the list of services and entities exist inside of the back-end part.
 
 #### Calculating The Credit Score
 
-Credit score calculation is based on simple a algorithm that takes the age, salary and guranatee index from user and combines with pre-determined coefficients to obtain user credit score.
+Credit score calculation is based on simple algorithm that takes the age, salary and guranatee index from user and combines with pre-determined coefficients to obtain user credit score.
 
 Method Name: <span style="color:red">CalculateUserCredit</span>
 ```
@@ -96,7 +96,25 @@ Frontend is a React project, which serves as user interface. Here, new users can
 Note that users can only apply once for credit.
 
 Frontend part of the project is ready to deploy and current configured to running at  <span style="color:red">localhost:3030</span>.
-To deploy front-end project, you need to use:
+To deploy front-end project, you need to use fallowing command in the root project path.
 ```node
 npm start
 ```
+
+## Unit Test
+
+There are several unit tests that convers all the potential cases of user credit apply results to validate the functionality of credit application algorithm.
+
+List of Unit Tests.
+
+    1- shouldReturnRejected - validating the result of credit application.
+    2- shouldReturnConfirmed - validating the result of credit application.
+    3- shouldGetTenThousandCreditAmount - validating the cross conditions and returning result of an application.
+
+
+---
+
+## License
+
+Loan App is an application that created under the [MIT](https://opensource.org/licenses/gpl-3.0.html)
+license, see the [license](./LICENSE) file in the project root for the full license text.

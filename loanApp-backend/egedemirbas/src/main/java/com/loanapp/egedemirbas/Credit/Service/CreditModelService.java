@@ -86,6 +86,11 @@ public class CreditModelService {
         credit.setCreditAmount(totalCash);
 
         creditEntityService.saveCredit(credit);
+
+        String message = "Dear " + user.getName() + " your credit application has finalized, application status is: " + enumCreditResult + " with credit amount: " + totalCash;
+        SmsMessageService smsMessage = new SmsMessageService(user.getPhoneNumber(), message);
+        smsMessage.sendMessage();
+
         TestLog.print("Method: CreateUserCredit called, credit with id:" + credit.getId() + " saved" + "\n");
         TestLog.print("Credit result is:" + credit.getCreditResult().toString() + " with amount:" + credit.getCreditAmount() + "\n");
         return credit;
