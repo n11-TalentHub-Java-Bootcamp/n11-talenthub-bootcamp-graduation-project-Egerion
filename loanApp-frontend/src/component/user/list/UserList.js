@@ -33,7 +33,6 @@ class UserList extends Component {
 							<th>Name</th>
 							<th>Surname</th>
 							<th>Age</th>
-							<th>Date of Birth</th>
 							<th>Salary</th>
 							<th>Guarantee Type</th>
 						</tr>
@@ -45,7 +44,6 @@ class UserList extends Component {
 									<td>{person.name}</td>
 									<td>{person.surname}</td>
 									<td>{person.age}</td>
-									<td>{person.dateOfBirth}</td>
 									<td>{person.salary}</td>
 									<td>{person.enumGuaranteeType}</td>
 									<td/>

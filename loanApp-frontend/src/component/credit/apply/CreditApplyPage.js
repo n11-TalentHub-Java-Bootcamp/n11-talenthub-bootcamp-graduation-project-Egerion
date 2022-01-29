@@ -39,6 +39,7 @@ class CreditApplyPage extends React.Component{
 
         let userDate = new Date(this.state.userDateOfBirth).getFullYear();
         this.state.userAge = new Date().getFullYear() - userDate;
+        this.state.userDateOfBirth =  new Date(this.state.userDateOfBirth).setHours(0,0,0,0); 
          
         let checkBox = document.getElementById('gFeeCBox');
         if(checkBox.checked)
@@ -57,7 +58,12 @@ class CreditApplyPage extends React.Component{
     }
 
     handleError(error) {
-        console.log(error.response)
+
+        let errorText = document.createTextNode(error.response.data.message);
+        document.getElementById("alertText").style.visibility="visible";
+        document.getElementById("alertText").appendChild(errorText);
+
+        console.log(error.response.data)
     }
 
     onCheckBoxChange(){
@@ -67,7 +73,7 @@ class CreditApplyPage extends React.Component{
             document.getElementById('gFeeInput').disabled = false;
         else
             document.getElementById('gFeeInput').disabled = true;
-        
+      
         console.log("checkbox change triggered");
     }
 
@@ -113,6 +119,9 @@ class CreditApplyPage extends React.Component{
                     </div>             
                     <input type="submit" className="btn btn-primary btn-block" value="Submit" style={{color: "white"}}/>   
                 </form>  
+                <div id="alertDiv" style={{visibility:"hidden"}}>
+                    <p id="alertText" className="alert alert-warning" role="alert"></p>
+                </div>
             </div>
             </>
         )

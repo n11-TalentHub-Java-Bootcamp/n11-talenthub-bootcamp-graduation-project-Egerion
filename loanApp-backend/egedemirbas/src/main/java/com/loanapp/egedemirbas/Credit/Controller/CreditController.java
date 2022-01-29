@@ -38,8 +38,8 @@ public class CreditController {
         Credit credit = creditEntityService.findAllByUserIdentityNumberAndUserDateOfBirth(userIdentityNumber, userDateOfBirth);
         if(credit == null){
             User user = userEntityService.findUserByIdentityNumber(userIdentityNumber);
-            if(user == null){
-                throw new CreditNotFoundException("Credit not found belonging to " + userEntityService.findUserByIdentityNumber(userIdentityNumber).getName());
+            if(user != null){
+                throw new CreditNotFoundException("Please check your account details.");
             }
             else{
                 throw new UserNotFoundException("User cannot be found in database!");
@@ -50,12 +50,18 @@ public class CreditController {
 
     @PostMapping("")
     public EnumCreditResult setUserCredit(@RequestBody UserDto userDto){
-        Credit credit = null;
+
+        Credit credit;
         User user = UserConverter.INSTANCE.convertUserDtoToUser(userDto);
-        if(user != null)
-            credit = creditModelService.CreateUserCredit(user);
-        else
+        if(user != null){
+            credit =  creditEntityService.findAllByUserIdentityNumberAndUserDateOfBirth(userDto.getIdentityNumber(), userDto.getDateOfBirth());
+            if(credit == null){
+                credit = creditModelService.CreateUserCredit(user);
+            }
+        }
+        else{
             throw new UserNotFoundException("user not found!");
+        }
         return credit.getCreditResult();
     }
 }

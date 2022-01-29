@@ -6,6 +6,8 @@ import com.loanapp.egedemirbas.User.Entity.User;
 import com.loanapp.egedemirbas.User.Exception.UserNotFoundException;
 import com.loanapp.egedemirbas.User.Service.UserEntityService;
 import lombok.RequiredArgsConstructor;
+import org.apache.http.HttpStatus;
+import org.apache.http.client.HttpResponseException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -35,17 +37,31 @@ public class UserController {
         return user;
     }
 
-    @PostMapping("")
+    @PostMapping("/response")
     public ResponseEntity<Object> saveFromDto(@RequestBody UserDto userDto){
 
-        User user = UserConverter.INSTANCE.convertUserDtoToUser(userDto);
-        user = userEntityService.saveUser(user);
-        URI uri = ServletUriComponentsBuilder
-                .fromCurrentRequest()
-                .path("/{id}")
-                .buildAndExpand(user.getId())
-                .toUri();
+            User user = UserConverter.INSTANCE.convertUserDtoToUser(userDto);
+            user = userEntityService.saveUser(user);
+            URI uri = ServletUriComponentsBuilder
+                    .fromCurrentRequest()
+                    .path("/{id}")
+                    .buildAndExpand(user.getId())
+                    .toUri();
         return ResponseEntity.created(uri).build();
+    }
+
+    @PostMapping("")
+    public UserDto saveNewUserFromDto(@RequestBody UserDto userDto) throws HttpResponseException {
+
+        User user = userEntityService.findUserByIdentityNumber(userDto.getIdentityNumber());
+        if(user != null){
+            throw new HttpResponseException(HttpStatus.SC_NOT_ACCEPTABLE,"User already exist in system and applied to credit. Please use /credit/query to check your credit result.");
+        }
+        else{
+            user = UserConverter.INSTANCE.convertUserDtoToUser(userDto);
+            user = userEntityService.saveUser(user);
+        }
+        return userDto;
     }
 
     @PostMapping("/update")

@@ -22,6 +22,10 @@ public class CreditEntityService {
         return creditDao.findAllById(id);
     }
 
+    public Credit findByUserIdentityNumber(Long userIdentityNumber){
+        return creditDao.findByUserIdentityNumber(userIdentityNumber);
+    }
+
     public Credit findAllByUserIdentityNumberAndUserDateOfBirth(Long userIdentityNumber, Date userDateOfBirth){
         return creditDao.findAllByUserIdentityNumberAndUserDateOfBirth(userIdentityNumber, userDateOfBirth);
     }

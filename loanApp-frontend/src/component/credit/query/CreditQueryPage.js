@@ -35,12 +35,20 @@ class CreditQueryPage extends React.Component{
 
     handleResponse(response) {
         this.setState({userCredit : response.data})
+        document.getElementById("alertDiv").style.visibility="hidden";
         document.getElementById("tableCreditResult").style.visibility="visible";
+
         console.log(this.state.userCredit);   
     }
 
 
     handleError(error) {
+
+        let errorText = document.createTextNode(error.response.data.message);
+        document.getElementById("alertDiv").style.visibility="visible";
+        document.getElementById("tableCreditResult").style.visibility="hidden";
+        document.getElementById("alertText").appendChild(errorText);
+
         console.log(error.response)
     }
 
@@ -92,6 +100,9 @@ class CreditQueryPage extends React.Component{
                             </tr>
                         </tbody>
                     </table>
+                </div>
+                <div id="alertDiv" style={{visibility:"hidden"}}>
+                    <p id="alertText" className="alert alert-warning" role="alert"></p>
                 </div>
             </div>
             </>

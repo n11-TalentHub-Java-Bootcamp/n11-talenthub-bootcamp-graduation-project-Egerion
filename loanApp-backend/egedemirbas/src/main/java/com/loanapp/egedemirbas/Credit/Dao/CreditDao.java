@@ -17,6 +17,8 @@ public interface CreditDao extends JpaRepository<Credit, Long> {
 
     Credit findAllById(Long id);
 
-    //@Query("select credit from Credit credit where credit.userIdentityNumber = :userIdentityNumber and credit.userDateOfBirth =:userDateOfBirth")
-    Credit findAllByUserIdentityNumberAndUserDateOfBirth(/*@Param("userIdentityNumber")*/ Long userIdentityNumber, /*@Param("userDateOfBirth")*/Date userDateOfBirth);
+    Credit findByUserIdentityNumber(Long userIdentityNumber);
+
+    @Query("select credit from Credit credit where credit.userIdentityNumber = :userIdentityNumber and credit.userDateOfBirth =:userDateOfBirth")
+    Credit findAllByUserIdentityNumberAndUserDateOfBirth(@Param("userIdentityNumber") Long userIdentityNumber, @Param("userDateOfBirth")Date userDateOfBirth);
 }
