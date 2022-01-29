@@ -43,11 +43,46 @@ Postgres SQL is getting used as database and Hibernate Framework handles the int
 
 Project is ready to deploy and current configured to running at  <span style="color:red">localhost:8081</span>.
 
-### Entites and Services
+### Back End
 
 Here are the list of services and entities exist inside of the back-end part.
 
-    - Entities:
-        User
-        Credit
-    - 
+    Entities:
+            User
+            Credit
+    Controllers:
+            UserController
+            CreditController
+    Dao's(Database Access Objec):
+            UserDao
+            CreditDao
+    Dto's(Database Transfer Object):
+            UserDto
+    Converters:
+            UserConverter - converts userDto to user.
+    Exceptions:
+            UserNotFoundException
+            CreditNotFoundException
+    Enums:
+            Enum Credit Guarantee Type: determines whether user paid gurantee fee while applying for credit or not.
+                - Paid
+                - Not Paid
+            Enum Credit Result: determines the result of credit inquiry of a user.
+                - CREDIT_CONFIRMED
+                - CREDIT_REJECTED
+    Services:
+            UserEntityService
+            CreditEntityService
+            CreditModelService: Determines the credit amount and result by getting necessary information from user.
+            SmsMessageService: Pushes sms to user and informs It about the result of credit transaction.
+
+#### Calculating The Credit Score
+
+Credit score calculation is based on simple algorithm that takes the age, salary and guranatee index from user and applies the necessary calculations.
+
+Method Name: <span style="color:red">CalculateUserCredit</span>
+```
+credit score = ∑〖1.354 x ageIndex+ 0.85 x salaryIndex+2.1.2 x guaranteeIndex〗
+```
+
+once the credit score is calculated, then <span style="color:red">CreateUserCredit</span>.
