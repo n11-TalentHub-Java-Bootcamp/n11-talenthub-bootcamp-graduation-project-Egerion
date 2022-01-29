@@ -38,10 +38,11 @@ Application capabilities are:
 
 ## Technical Information
 
-Project consist of two sections, first section is back-end of the project, which based on Spring Framework. 
-Postgres SQL is getting used as database and Hibernate Framework handles the interaction.
+Project consist of two sections, first section is back-end of the project, which based on Spring Framework. Postgres SQL is getting used as database and Hibernate Framework handles the interaction.
 
-Project is ready to deploy and current configured to running at  <span style="color:red">localhost:8081</span>.
+Backend part of the project is ready to deploy and current configured to running at  <span style="color:red">localhost:8081</span>.
+
+---
 
 ### Back End
 
@@ -78,11 +79,24 @@ Here are the list of services and entities exist inside of the back-end part.
 
 #### Calculating The Credit Score
 
-Credit score calculation is based on simple algorithm that takes the age, salary and guranatee index from user and applies the necessary calculations.
+Credit score calculation is based on simple a algorithm that takes the age, salary and guranatee index from user and combines with pre-determined coefficients to obtain user credit score.
 
 Method Name: <span style="color:red">CalculateUserCredit</span>
 ```
 credit score = ∑〖1.354 x ageIndex+ 0.85 x salaryIndex+2.1.2 x guaranteeIndex〗
 ```
 
-once the credit score is calculated, then <span style="color:red">CreateUserCredit</span>.
+once the credit score is calculated, then <span style="color:red">CreateUserCredit</span> method is getting called and applies the rules that determined by our project and returns the result of user credit.
+
+---
+
+## Front End
+
+Frontend is a React project, which serves as user interface. Here, new users can register to system and apply for credit. Pre-applied users can always inquiry their credit apply result by entering their user-identity number and date of births.
+Note that users can only apply once for credit.
+
+Frontend part of the project is ready to deploy and current configured to running at  <span style="color:red">localhost:3030</span>.
+To deploy front-end project, you need to use:
+```node
+npm start
+```
