@@ -58,10 +58,10 @@ Here are the list of services and entities exist inside of the back-end part.
     Controllers:
             UserController
             CreditController
-    Dao's(Database Access Objec):
+    Dao's(Data Access Objec):
             UserDao
             CreditDao
-    Dto's(Database Transfer Object):
+    Dto's(Data Transfer Object):
             UserDto
     Converters:
             UserConverter - converts userDto to user.
