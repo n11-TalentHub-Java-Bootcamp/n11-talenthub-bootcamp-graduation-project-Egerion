@@ -99,6 +99,12 @@ once the credit score is calculated, then <span style="color:red">CreateUserCred
 
 The [Twilio Api](./resources/links/Twilio.url) is getting used to inform user about their credit application result. Once applied, user will recieve text message which contains information about the result of credit application along with It's amount...
 
+<div>
+    <p align="center">
+        <img src="./resources/images/message.jpg"  width="30%" text="User List Page"/>
+    </p>
+</div>
+
 Maven, pom.xml configuration:
 
 ```xml
