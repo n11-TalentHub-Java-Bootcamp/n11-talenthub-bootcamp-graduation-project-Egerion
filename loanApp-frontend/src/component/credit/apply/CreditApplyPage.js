@@ -29,14 +29,6 @@ class CreditApplyPage extends React.Component{
 
     handleFormSubmit = (e) => {
 
-        // console.log("name:" + this.state.userName);
-        // console.log("surname:" + this.state.userName);
-        // console.log("user id: " + this.state.userId);
-        // console.log("phone number: " + this.state.userPhone);
-        // console.log("salary: " + this.state.userSalary);
-        // console.log("Date of Birth: " + this.state.userDateOfBirth);
-        // console.log("Guarantee: " + this.state.userGuaranteeAmount);
-
         let userDate = new Date(this.state.userDateOfBirth).getFullYear();
         this.state.userAge = new Date().getFullYear() - userDate;
         this.state.userDateOfBirth =  new Date(this.state.userDateOfBirth).setHours(0,0,0,0); 
@@ -49,12 +41,17 @@ class CreditApplyPage extends React.Component{
         e.preventDefault();
         UserService.RegisterUser(this.state)
         .then(CreditService.CreditCreateNew(this.state))
-        .then(response => this.handleResponse(response))
+        .then(response => this.handleResponse())
         .catch(error => this.handleError(error));  
     }
 
-    handleResponse(response) {
+    handleResponse() {
 
+        let notifText = document.createTextNode(
+            "Your application has taken, sms text is on the way, in the mean time, you can go /credit/query page to check your credit result."
+        );
+        document.getElementById("notifText").style.visibility="visible";
+        document.getElementById("notifText").appendChild(notifText);
     }
 
     handleError(error) {
@@ -122,6 +119,10 @@ class CreditApplyPage extends React.Component{
                 <div id="alertDiv" style={{visibility:"hidden"}}>
                     <p id="alertText" className="alert alert-warning" role="alert"></p>
                 </div>
+                <div id="notifDiv" style={{visibility:"hidden"}}>
+                    <p id="notifText" className="alert alert-warning" role="alert"></p>
+                </div>
+
             </div>
             </>
         )
